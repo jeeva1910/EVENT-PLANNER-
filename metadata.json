@@ -1,0 +1,6 @@
+{
+  "name": "EventHub – Event Planning & Management Platform",
+  "description": "Centralized event planning and management platform connecting organizers, attendees, and administrators with discovery, QR ticketing, waitlists, schedules, accessibility, smart routes, and analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
