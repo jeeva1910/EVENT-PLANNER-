@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+build/
+
+# Testing & coverage
+coverage/
+
+# Logs & temp files
+*.log
+.DS_Store
+
+# Environment variables & secrets (Never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Local fallback persistent storage (Contains local fallback JSON data)
+.data/
