@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import fs from 'fs';
 import path from 'path';
 import './env';
+import { setServers } from 'node:dns';
 
 // Disable buffering so Mongoose operations fail fast rather than hanging when disconnected
 mongoose.set('bufferCommands', false);
@@ -149,8 +150,17 @@ export const connectDB = async (customUri?: string): Promise<boolean> => {
     console.warn('⚠️ [DataStore] Warning: Operating on local fallback storage (.data/eventhub_db.json) until real MongoDB Atlas credentials are provided.');
     return false;
   }
+  
+  const dnsServers = process.env.MONGODB_DNS_SERVERS
+    ?.split(',')
+    .map(server => server.trim())
+    .filter(Boolean);
 
   try {
+      if (dnsServers?.length) {
+        setServers(dnsServers);
+      }
+
     const masked = maskMongoUri(cleaned);
     console.log(`🔄 [MongoDB Atlas] Connecting to MongoDB Atlas (${masked})...`);
 
